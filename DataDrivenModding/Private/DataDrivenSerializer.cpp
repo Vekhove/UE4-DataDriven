@@ -252,11 +252,11 @@ ADataDrivenSerializer* ADataDrivenSerializer::GetTextureValue(FString Key, FStri
 	if (!Success) return this;
 
 	Value = UKismetRenderingLibrary::ImportFileAsTexture2D(this, AbsolutePath);
-	//Value->LODGroup = TextureGroup::TEXTUREGROUP_Pixels2D;
-	//Value->CompressionSettings = TextureCompressionSettings::TC_EditorIcon;
-	//Value->UpdateResource();
+	Value->LODGroup = TextureGroup::TEXTUREGROUP_Pixels2D;
+	Value->CompressionSettings = TextureCompressionSettings::TC_EditorIcon;
+	Value->UpdateResource();
 
-	FTexture2DMipMap* MipMaps = &Value->PlatformData->Mips[0];
+	/*FTexture2DMipMap* MipMaps = &Value->PlatformData->Mips[0];
 	FByteBulkData* RawImageData = &MipMaps->BulkData;
 
 	TArray<FColor> OutBMP;
@@ -274,7 +274,7 @@ ADataDrivenSerializer* ADataDrivenSerializer::GetTextureValue(FString Key, FStri
 	Params.CompressionSettings = TextureCompressionSettings::TC_EditorIcon;
 	Params.bUseAlpha = true;
 	Params.TextureGroup = TextureGroup::TEXTUREGROUP_Pixels2D;
-	FImageUtils::CreateTexture2D(Value->GetSizeX(), Value->GetSizeY(), static_cast<FColor*>(RawImageData->Lock(LOCK_READ_ONLY)), Value, TEXT(""), EObjectFlags::RF_Dynamic, Params);
+	FImageUtils::CreateTexture2D(Value->GetSizeX(), Value->GetSizeY(), static_cast<FColor*>(RawImageData->Lock(LOCK_READ_ONLY)), Value, TEXT(""), EObjectFlags::RF_Dynamic, Params);*/
 	
 	return this;
 }
